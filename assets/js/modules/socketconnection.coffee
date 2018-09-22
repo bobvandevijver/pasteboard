@@ -11,7 +11,9 @@ socketConnection = (pasteboard) ->
 		init: () ->
 			return unless @isSupported()
 			protocol = if window.location.protocol == "http:" then "ws:" else "wss:"
-			connection = new WebSocket(protocol + "//#{window.location.hostname}:#{SOCKET_PORT}")
+			# FIXME: This originally included the socket port, which is incorrect
+			# when the port is forwarded (for example when using docker).
+			connection = new WebSocket(protocol + "//#{window.location.hostname}")
 			connection.onmessage = (e) ->
 				try
 					data = JSON.parse(e.data)
