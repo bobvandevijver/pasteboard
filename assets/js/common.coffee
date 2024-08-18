@@ -19,8 +19,8 @@ window.drawBackgroundOverlay = () ->
 	ctx = $canvas[0].getContext("2d")
 
 	$canvas.css(
-		"width": Math.max $body.outerWidth(), $window.width()
-		"height": Math.max $body.outerHeight(), $window.height()
+		"width": "100%"
+		"height": "100%"
 	)
 	ctx.clearRect 0, 0, $window.width(), $window.height()
 
